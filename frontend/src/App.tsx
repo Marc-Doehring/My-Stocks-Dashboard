@@ -1,21 +1,46 @@
 import StockCard from "./components/StockCard";
 
+const magnificentSeven = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA"];
+
 export default function App() {
   return (
     <div style={{
-      background: "#121212",
-      padding: "2rem",
+      backgroundColor: "#121212",
+      minHeight: "100vh",
       display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "center",
+      justifyContent: "center",  // zentriert den Content horizontal
+      padding: "2rem"
     }}>
-      <StockCard symbol="AAPL" />
-      <StockCard symbol="TSLA" />
-      <StockCard symbol="MSFT" />
-      <StockCard symbol="GOOGL" />
-      <StockCard symbol="AMZN" />
-      <StockCard symbol="NVDA" />
-      <StockCard symbol="META" />
+      {/* Content Container */}
+      <div style={{
+        width: "100%",
+        maxWidth: "1660px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"       // Überschrift und Karten zentrieren
+      }}>
+        <h1 style={{
+          color: "gold",
+          fontSize: "2.5rem",
+          marginBottom: "2rem",
+          textShadow: "0 0 10px gold",
+          textAlign: "center"
+        }}>
+          Magnificent Seven
+        </h1>
+
+        {/* Karten Wrapper */}
+        <div style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",  // Karten in jeder Zeile zentrieren
+          gap: "1rem"
+        }}>
+          {magnificentSeven.map(symbol => (
+            <StockCard key={symbol} symbol={symbol} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
